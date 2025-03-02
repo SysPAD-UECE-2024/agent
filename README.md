@@ -1,93 +1,81 @@
 # SysPAD Monitor Agent - v1.2.0
 
-## Description
+O Agent de Monitoramento de Banco de Dados é uma aplicação desenvolvida em Flask (framework web Python) para registrar operações de inserção, atualização e exclusão de dados em bancos de dados protegidos. Integra-se ao ecossistema SysPAD para auditoria de conformidade com LGPD/GDPR.
 
-The Database Monitor Agent is an application developed in Flask, a Python web development framework. The agent has the function of monitoring and recording data insertion, update and deletion operations on a specific database.
+# Estrutura do readme.md
 
-## Key Features
+Este documento está organizado nas seguintes seções principais:
 
-- Agent start
-- Agent database start
-- Agent verification
+1. **Funcionalidades-Chave**  
+   Principais capacidades técnicas do sistema
 
-## Complete Documentation
+2. **Documentação Técnica**  
+   Detalhes de endpoints e especificação OpenAPI
 
-The complete API documentation, including details about all available endpoints, request parameters, response formats, and usage examples, can be found at [DOCUMENTATION LINK](https://github.com/FRIDA-LACNIC-UECE/documentation/blob/main/SysPAD%20Documentation.pdf) or SWAGGER DOCUMENTATION at http://localhost:3000 after executed.
+3. **Tecnologias Utilizadas**  
+   Stack tecnológico completo do back-end
 
+4. **Instalação**  
+   Guia completo para implantação (Docker e manual)
 
-## Technologies Used
+5. **Configuração de Ambiente**  
+   Variáveis necessárias e pré-requisitos
 
-- Programming Language: Python (Version 3.10)
-- Framework/API/Web Framework: Flask Framework
-- Supported Database: MySQL and PostgreSQL
-- Object Relational Mapping: SqlAlchemy
+6. **Usuários de Teste**  
+   Credenciais pré-configuradas para validação
 
-## Requirements
+7. **Estrutura do Repositório**  
+   Organização de diretórios e arquivos-chave
 
-For the initialization of database monitoring by the Agent, the user must perform the following requirements:
+8. **Contribuição**  
+   Diretrizes para colaboração no projeto
 
-- The client's database must have its encrypted copy in the cloud and be properly anonymized. To encrypt and anonymize the database, the user must use the SysPAD data protection web application.
+9. **Licença**  
+   Direitos de uso e informações legais
 
-- If the back-end API is being run by the Docker service, the agent should also be run using Docker.
+# Dependências 
+Tecnologias Utilizadas
+Componente	Versão	Finalidade
+Python	3.10+	Lógica principal do sistema
+Flask	2.3.x	Framework web para APIs
+SQLAlchemy	2.0.23	ORM para operações de banco
+Cryptography	41.0.3	Implementação de criptografia
+Flask-SQLAlchemy	3.0.3	Integração com bancos de dados
+Swagger UI	4.19.0	Documentação interativa de APIs
 
-## Installation and Usage
+# Instalação
+Método 1: Instalação Manual
+``` bash
+Copy
+git clone https://github.com/FRIDA-LACNIC-UECE/agent.git
+cd agent
 
-### Without docker:
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
-1. Clone this repository to your local machine using the following command:
+# Configurar variáveis
+export FLASK_APP=application.py
+export API_URL="http://localhost:5000"
 
-   ```
-   git clone https://github.com/FRIDA-LACNIC-UECE/agent.git
-   ```
+# Iniciar serviço
+flask run --port=3000
 
-2. Navigate to the project directory:
+```
 
-   ```
-   cd agent
-   ```
+Método 2: Via Docker
+```bash
+Copy
+docker compose up --build
+```
 
-3. Install the necessary dependencies:
+# Variáveis necessárias no .env
+## Usuários de Teste
 
-   ```
-   pip3 install -r requirements.txt
-   ```
+| Perfil        | Email                   | Senha         | Acessos               |
+|---------------|-------------------------|---------------|-----------------------|
+| Administrador | admin@example.com       | Admin@123     | Controle completo     |
+| Convidado      | convidado@example.com   | Convidado@123 | Operações limitadas   |
 
-4. Set up the environment variables:
-
-   ```
-   export FLASK_APP=application.py
-   export API_URL=[API_URL]
-   ```
-
-7. Start the server:
-
-   ```
-   python3 application.py
-   ```
-
-### With docker:
-1. Start the docker compose:
-
-   ```
-   docker compose up
-   ```
-
-## Test Users
-
-### Guest user:
-- Email: convidado@example.com
-- Password: Convidado@123
-
-### Admin user:
-- Email: admin@example.com
-- Password: Admin@123
-
-## Contributing
-
-If you would like to contribute to the project, please follow these steps:
-
-1. Fork this repository.
-2. Create a branch for your feature (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add your feature'`).
-4. Push the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
+# Licença
+Este projeto não possui licença específica, podendo ser utilizado livremente para fins acadêmicos e de pesquisa. Para uso comercial, entre em contato com LARCES/UECE.
